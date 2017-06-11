@@ -33,12 +33,8 @@ public class CrerateRandomSeed : MonoBehaviour {
     }
     void Init()
     {
-        col = 10;
-        row = 4;
-        cubeNumber = 5;
         waitTime = 1f;
         map = new int[col, row];
-        cubeSize = 1f;
         createPos = transform.position;
     } // 초기화 필요한 친구들.
 
