@@ -33,7 +33,7 @@ public class CharacterMove : MonoBehaviour {
 		
 		transform.position = mousePos;
 
-		print(mousePos);
+		//print(mousePos);
 		
 	}
 }
