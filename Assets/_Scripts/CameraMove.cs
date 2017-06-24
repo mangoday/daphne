@@ -14,8 +14,10 @@ public class CameraMove : MonoBehaviour {
     public GameObject Target;
 	// Use this for initialization
 	void Start () {
-        moveSpeed = .1f;
-        direction =  Target.transform.up - transform.forward;
+                
+        // direction =  Target.transform.up - transform.forward;
+        direction =  -Vector3.forward;
+
 	}
 	
 	// Update is called once per frame
