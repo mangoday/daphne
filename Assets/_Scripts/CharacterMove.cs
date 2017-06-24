@@ -13,9 +13,11 @@ using UnityEngine;
 //보도블럭을 특정 블럭위에서만 간다.
 //기본 디폴트는 파괴시킨다 캐릭터를
 
+[RequireComponent(typeof(CharacterController))]
 public class CharacterMove : MonoBehaviour {
 
-	Rigidbody rb;
+
+	CharacterController charCtrl;
 
 	public float gravityValue = -1;
 	
@@ -41,14 +43,11 @@ public class CharacterMove : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		rb = GetComponent<Rigidbody>();
-		
+		charCtrl = GetComponent<CharacterController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//중력. 땅에 붙어 있게만든다.
-		rb.velocity = gravityValue * Vector3.up;
 
 		if(moveSwitch)
 		{
