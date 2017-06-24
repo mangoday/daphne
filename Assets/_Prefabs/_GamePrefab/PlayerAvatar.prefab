@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4064501701805380}
   - component: {fileID: 95669066031993054}
-  - component: {fileID: 114509989661861652}
-  - component: {fileID: 143553966372420662}
+  - component: {fileID: 143830922341690782}
+  - component: {fileID: 114680271544618166}
   m_Layer: 0
-  m_Name: BlueIdol
+  m_Name: PlayerAvatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,9 +264,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1058119167692208}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -2, y: 1.466, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.22}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4462464060850250}
   - {fileID: 4426493552911546}
@@ -275,7 +275,7 @@ Transform:
   - {fileID: 4989388143410974}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4104393437720130
 Transform:
   m_ObjectHideFlags: 1
@@ -498,7 +498,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114509989661861652
+--- !u!114 &114680271544618166
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -506,11 +506,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1058119167692208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f30bdc8645204107a09aafa37ac2394, type: 3}
+  m_Script: {fileID: 11500000, guid: 83e18ea54e7dddb45b3c2bbba8abd368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityValue: -0.1
-  speed: -0.5
+  gravityValue: -1
+  speed: 2
   moveSwitch: 1
   moveDirection: {x: 0, y: 0, z: 1}
 --- !u!137 &137639436479747692
@@ -717,7 +717,7 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.055747584, y: 0.055453308, z: 0.00031723012}
     m_Extent: {x: 0.02528903, y: 0.0053917244, z: 0.005000009}
   m_DirtyAABB: 0
---- !u!143 &143553966372420662
+--- !u!143 &143830922341690782
 CharacterController:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -727,10 +727,10 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1
+  m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.01
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
