@@ -13,58 +13,101 @@ using UnityEngine;
 //보도블럭을 특정 블럭위에서만 간다.
 //기본 디폴트는 파괴시킨다 캐릭터를
 
+
+
+
+//캐릭터는 물위를 떠다닌다.
+//
+
+
 [RequireComponent(typeof(CharacterController))]
-public class CharacterMove : MonoBehaviour {
+public class CharacterMove : MonoBehaviour
+{
 
 
-	CharacterController charCtrl;
-
-	public float gravityValue = -1;
-	
-	public float speed = 2f;
-	Vector3 mousePos;
-
-	public bool moveSwitch = true;
-	public Vector3 moveDirection = Vector3.forward;
-
-	//싱글톤 구조
-	public static CharacterMove Instance = null;
-	private void Awake()
-	{
-			if(Instance == null)
-			{
-				Instance = this;
-			}
-	}
+    CharacterController charCtrl;
 
 
+    public float speed;
+    Vector3 mousePos;
 
+    public bool moveSwitch = true;
+    public Vector3 moveDirection = Vector3.forward;
 
-	// Use this for initialization
-	void Start () {
-
-		charCtrl = GetComponent<CharacterController>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-		if(moveSwitch)
-		{
-		transform.Translate(speed * moveDirection);
-		}
-		
-
-		//보통 블럭을 밟으면 전부 파괴
+    //싱글톤 구조
+    public static CharacterMove Instance = null;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
 
 
 
-		// mousePos = Input.mousePosition;
-		
-		// transform.position = mousePos;
+    // Use this for initialization
+    void Start()
+    {
 
-		// print(mousePos);
-		
-	}
+        charCtrl = GetComponent<CharacterController>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (moveSwitch)
+        {
+            transform.Translate(speed * moveDirection);
+        }
+
+
+        //보통 블럭을 밟으면 전부 파괴
+
+        //-z방향으로 이동.
+        charCtrl.SimpleMove(-Vector3.forward * speed);
+
+
+
+
+
+    }
+
+
+    //충돌 처리
+    //장애물과 만나면 한칸 튕긴다.
+    //1. 돌과 같은 장애물에 충돌되면
+    //2. 충돌체가 장애물이면
+    //3. 캐릭터는 한칸 튕긴다.
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     //충돌한 물체가 장애물이면
+    //     if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+    //     {
+    //         //캐릭터는 한칸 뒤로 간다.
+    //         transform.Translate(Vector3.forward);
+    //     }
+    // }
+
+    /// <summary>
+    /// OnControllerColliderHit is called when the controller hits a
+    /// collider while performing a Move.
+    /// </summary>
+    /// <param name="hit">The ControllerColliderHit data associated with this collision.</param>
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+
+        //충돌한 물체가 장애물이면
+        if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            print(hit);
+            //캐릭터는 한칸 뒤로 간다.
+            transform.Translate(Vector3.forward);
+        }
+    }
+
+
+
 }

@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Cube
+  - Road
+  - Spike
   layers:
   - Default
   - TransparentFX
@@ -13,7 +16,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
+<<<<<<< HEAD
+  - BG
+=======
+  - Obstacle
+>>>>>>> 83b259f90dbf62c9a7b736ce0000b65bb0876536
   - 
   - 
   - 
