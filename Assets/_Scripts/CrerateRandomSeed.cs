@@ -78,7 +78,8 @@ public class CrerateRandomSeed : MonoBehaviour {
                 createPos.x += -cubeSize; // 다음 큐브를 위한 X 포지션 교체
             }
             // 한줄 끝나면 한칸 올려줌 Z 포지션 교체, X 리셋
-            yield return new WaitForSeconds(waitTime);
+            //yield return new WaitForSeconds(waitTime);
+            yield return null;
             createPos.x = 0;
             createPos.z += -cubeSize;
         }
