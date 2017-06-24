@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65236756745327218}
   - component: {fileID: 23893441747230176}
   m_Layer: 9
-  m_Name: Road_test
+  m_Name: Water
   m_TagString: Road
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
