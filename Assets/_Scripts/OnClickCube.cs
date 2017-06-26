@@ -39,7 +39,7 @@ public class OnClickCube : MonoBehaviour {
         // 기타 추가사항.
     }
 
-    GameState m_State; // 현재 게임 상태
+    public GameState m_State; // 현재 게임 상태
     public List<CubeState> m_List; // 블럭 리스트
     public int listSize; // 총 몇개
     public int cubeSize; // 몇개의 종류

@@ -14,16 +14,19 @@ public class DrawWhatCube : MonoBehaviour {
     
     void Update()
     {
-        for (int i = 0; i < OnClickCube.instance.listSize; i++)
-        {
-            Transform child = transform.GetChild(i);
-            if (OnClickCube.instance.m_List[i] == OnClickCube.CubeState.turnLeft)
+        if(OnClickCube.instance.m_State == OnClickCube.GameState.Click)
+        { 
+            for (int i = 0; i < OnClickCube.instance.listSize; i++)
             {
-                child.GetComponent<Image>().sprite = Image0;
-            }
-            else if (OnClickCube.instance.m_List[i] == OnClickCube.CubeState.turnRight)
-            {
-                child.GetComponent<Image>().sprite = Image1;
+                Transform child = transform.GetChild(i);
+                if (OnClickCube.instance.m_List[i] == OnClickCube.CubeState.turnLeft)
+                {
+                    child.GetComponent<Image>().sprite = Image0;
+                }
+                else if (OnClickCube.instance.m_List[i] == OnClickCube.CubeState.turnRight)
+                {
+                    child.GetComponent<Image>().sprite = Image1;
+                }
             }
         }
     }

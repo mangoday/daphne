@@ -33,7 +33,6 @@ public class CrerateRandomSeed : MonoBehaviour {
     }
     void Init()
     {
-        waitTime = 1f;
         map = new int[col, row];
         createPos = transform.position;
     } // 초기화 필요한 친구들.
@@ -56,6 +55,7 @@ public class CrerateRandomSeed : MonoBehaviour {
             for(int j=0; j<row; j++)
             {
                 GameObject Cube;
+                yield return new WaitForSeconds(waitTime);
                 switch (map[i,j])
                 {
                     case 0:
@@ -78,8 +78,6 @@ public class CrerateRandomSeed : MonoBehaviour {
                 createPos.x += -cubeSize; // 다음 큐브를 위한 X 포지션 교체
             }
             // 한줄 끝나면 한칸 올려줌 Z 포지션 교체, X 리셋
-            //yield return new WaitForSeconds(waitTime);
-            yield return null;
             createPos.x = 0;
             createPos.z += -cubeSize;
         }
