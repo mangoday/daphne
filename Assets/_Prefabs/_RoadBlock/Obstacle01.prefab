@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33186187230141060}
   - component: {fileID: 65148246558964594}
   - component: {fileID: 23725394215086538}
+  - component: {fileID: 114252518162965792}
   m_Layer: 8
   m_Name: Obstacle01
   m_TagString: Cube
@@ -93,3 +94,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 3, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114252518162965792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1445962735492944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 146062f5089be634ebe0aace6d0714ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 0.5
+  rend: {fileID: 0}
