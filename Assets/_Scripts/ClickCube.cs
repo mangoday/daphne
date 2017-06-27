@@ -43,17 +43,17 @@ public class ClickCube : MonoBehaviour {
         {
             RaycastHit hit = new RaycastHit(); // hit정보
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // mouse Ray
-            
-            if(Physics.Raycast(ray.origin, ray.direction, out hit))
+
+            if (Physics.Raycast(ray.origin, ray.direction, out hit))
             {
-               if(hit.transform.tag == "Road") // tag가 큐브면
-               {
+                if (hit.transform.tag == "Road") // tag가 큐브면
+                {
                     Transform target = hit.transform;
                     GameObject ChangeObject = Instantiate(NowCube);
                     Destroy(target.gameObject); // 삭제 후 
                     ChangeObject.transform.position = target.position;
-               }
+                }
             }
         }
-	}
+    }
 }

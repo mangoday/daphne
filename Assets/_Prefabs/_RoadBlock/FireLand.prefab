@@ -55,7 +55,11 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
+<<<<<<< HEAD:Assets/_Prefabs/Road.prefab
+  - {fileID: 2100000, guid: 2efb42c0262694e4c95e11ef18e75651, type: 2}
+=======
   - {fileID: 2100000, guid: 3ec573b613ec24593bb32cda02cf4071, type: 2}
+>>>>>>> e8a00fdea09c740a1ec34de9f79ece7bdbe65631:Assets/_Prefabs/_RoadBlock/FireLand.prefab
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
