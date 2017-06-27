@@ -92,6 +92,10 @@ public class CharacterMove : MonoBehaviour
             //캐릭터는 한칸 뒤로 간다.
             transform.Translate(-Vector3.forward);
         }
+        else if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Direction"))
+        {
+
+        }
     }
 
 
