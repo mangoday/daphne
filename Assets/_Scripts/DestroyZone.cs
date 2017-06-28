@@ -8,21 +8,14 @@ public class DestroyZone : MonoBehaviour {
 
     // 만약 지나쳐가는 물체가 길, 장애물 이라면 파괴(아래로 이동시킨 후 일정 높이 가면 없어지도록)
     // 다프네라면 엔딩(나무로 변화)
-    public float downSpeed;
-    public float destroyHeight;
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag.Contains("Road") || other.tag.Contains("Cube"))
+        if (other.tag.Contains("Road"))
         {
-            Vector3 cubePos;
-            cubePos = other.transform.position;
-            while (other.transform.position.y > destroyHeight)
-            {
-                cubePos.y -= downSpeed;
-                other.transform.position = cubePos;
-            }
-            Destroy(other.gameObject);
+            CubeDestroy cd = other.gameObject.GetComponent<CubeDestroy>();
+            if (cd)
+            { cd.isExiting = true; }
         }
     }
 }
