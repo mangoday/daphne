@@ -10,12 +10,29 @@ public class DrawWhatCube : MonoBehaviour {
     public Sprite Image0, Image1;
     // Use this for initialization
     // Update is called once per frame
-        
-    
+    RectTransform myRectTransform;
+    Vector3 startPos;
+    public float scrollSpeed;
+    void Start()
+    {
+        startPos = transform.localPosition;
+    }
+
     void Update()
     {
-        if(OnClickCube.instance.m_State == OnClickCube.GameState.Click)
-        { 
+        if(OnClickCube.instance.m_State == OnClickCube.GameState.Ready)
+        {
+            myRectTransform = GetComponent<RectTransform>();
+            myRectTransform.localPosition = new Vector3(transform.localPosition.x + 350, transform.localPosition.y, transform.localPosition.z);
+            transform.localPosition = myRectTransform.localPosition;
+        }
+        if(transform.localPosition.x > startPos.x)
+        {
+            myRectTransform.localPosition = new Vector3(myRectTransform.localPosition.x - scrollSpeed, myRectTransform.localPosition.y, myRectTransform.localPosition.z);
+            transform.localPosition = myRectTransform.localPosition;
+        }
+        if (OnClickCube.instance.m_State == OnClickCube.GameState.Click)
+        {
             for (int i = 0; i < OnClickCube.instance.listSize; i++)
             {
                 Transform child = transform.GetChild(i);

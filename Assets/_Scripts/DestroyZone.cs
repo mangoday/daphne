@@ -6,16 +6,14 @@ using UnityEngine;
 // 이 오브젝트를 지나쳐가는 물체들을 없애줍니다.
 public class DestroyZone : MonoBehaviour {
 
-    // 만약 지나쳐가는 물체가 길, 장애물 이라면 파괴(아래로 이동시킨 후 일정 높이 가면 없어지도록)
+    // 만약 지나쳐가는 물체가 길, 장애물 이라면 파괴.
     // 다프네라면 엔딩(나무로 변화)
-
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag.Contains("Road"))
-        {
-            CubeDestroy cd = other.gameObject.GetComponent<CubeDestroy>();
-            if (cd)
-            { cd.isExiting = true; }
-        }
+        //if(other.tag.Contains("벽"))
+        //{
+        //    Destroy(other.gameObject);
+        //}
+        Destroy(other.gameObject);
     }
 }
