@@ -81,30 +81,20 @@ public class CharacterMove : MonoBehaviour
     //1. 돌과 같은 장애물에 충돌되면
     //2. 충돌체가 장애물이면
     //3. 캐릭터는 한칸 튕긴다.
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     //충돌한 물체가 장애물이면
-    //     if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
-    //     {
-    //         //캐릭터는 한칸 뒤로 간다.
-    //         transform.Translate(Vector3.forward);
-    //     }
-    // }
-
-    /// <summary>
-    /// OnControllerColliderHit is called when the controller hits a
-    /// collider while performing a Move.
-    /// </summary>
-    /// <param name="hit">The ControllerColliderHit data associated with this collision.</param>
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
 
+        print(hit.collider.gameObject.layer);
         //충돌한 물체가 장애물이면
         if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
             print(hit);
             //캐릭터는 한칸 뒤로 간다.
-            transform.Translate(Vector3.forward);
+            transform.Translate(-Vector3.forward);
+        }
+        else if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Direction"))
+        {
+
         }
     }
 
