@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 // 이 스크립트는 현재(다음번 클릭에 놓여질) 블럭상태(방향, Something)을 판별해
 // 플레이어가 Road 를 클릭할 경우 그 자리에 어떤 Object를 배치하는 스크립트 입니다.
 // - 현재 상태 변수(대기, 클릭, 추가)
@@ -91,9 +90,16 @@ public class OnClickCube : MonoBehaviour {
     // List 준비.
     public void Ready()
     {
-        InitList();
-        PrintList();
-        m_State = GameState.Click;
+        if (m_List.Count == listSize)
+        {
+            m_State = GameState.Click;
+        }
+        else
+        {
+            InitList();
+            PrintList();
+            m_State = GameState.Click;
+        }
     }
 
     // 클릭가능한 상태. 레이를 쏴서 큐브를 배치할 수 있는 블럭이라면 리스트의 맨앞 오브젝트를 배치하고 Add로 넘김 
@@ -143,6 +149,6 @@ public class OnClickCube : MonoBehaviour {
     public void AddOne()
     {
         m_List.Add((CubeState)Random.Range(0, cubeSize)); // 한개아이템 추가.
-        m_State = GameState.Click;
+        m_State = GameState.Ready;
     }
 }
