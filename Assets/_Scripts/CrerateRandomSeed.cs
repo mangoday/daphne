@@ -61,6 +61,7 @@ public class CrerateRandomSeed : MonoBehaviour {
                     case 0:
                         Cube = Instantiate(road);
                         Cube.transform.position = createPos;
+                        iTween.FadeTo(Cube, iTween.Hash("alpha", 1f, "time", 3.0f));
                         break;
                     case 1:
                         Cube = Instantiate(cube1);
