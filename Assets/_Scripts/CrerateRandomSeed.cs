@@ -15,7 +15,8 @@ using UnityEngine;
 //  - 큐브 생성위치 ( 빈 오브젝트에서 출발 1개씩 생성한다 -> 포지션 값 변수 필요.)
 //  - 위에서 만든 배열 값들.
 
-public class CrerateRandomSeed : MonoBehaviour {
+public class CrerateRandomSeed : MonoBehaviour
+{
 
     public int[,] map;
     public int row, col;
@@ -24,12 +25,13 @@ public class CrerateRandomSeed : MonoBehaviour {
     public float waitTime;
     public float cubeSize;
     Vector3 createPos;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         Init();
         RandomSeed(map);
         StartCoroutine(CreateCube());
-        
+
     }
     void Init()
     {
@@ -40,9 +42,9 @@ public class CrerateRandomSeed : MonoBehaviour {
     // 인자로 받은 행렬에 값을 넣어 반환해준다.
     void RandomSeed(int[,] map)
     {
-        for(int i=0; i < cubeNumber; i++)
+        for (int i = 0; i < cubeNumber; i++)
         {
-            int temp = Random.Range(0, (row * col)-1); // 몇번 째 배열에 넣을 것인지 결정.
+            int temp = Random.Range(0, (row * col) - 1); // 몇번 째 배열에 넣을 것인지 결정.
             map[temp / row, temp % row] = Random.Range(1, 4); // 정해진 배열에 몇번 째 큐브를 넣을것인지 결정.
         }
         // 남은 곳은 0.
@@ -50,17 +52,20 @@ public class CrerateRandomSeed : MonoBehaviour {
 
     IEnumerator CreateCube() // 큐브 생성
     {
-        for(int i=0; i<col; i++)
+        for (int i = 0; i < col; i++)
         {
-            for(int j=0; j<row; j++)
+            for (int j = 0; j < row; j++)
             {
                 GameObject Cube;
                 yield return new WaitForSeconds(waitTime);
-                switch (map[i,j])
+                switch (map[i, j])
                 {
                     case 0:
                         Cube = Instantiate(road);
                         Cube.transform.position = createPos;
+                        //iTween.FadeTo(Cube, 150, 10);
+                        // iTween.RotateBy(Cube, iTween.Hash("x", 2, "easeType", "easeInOutBack", "loopType", "pingPong", "delay", .4));
+                        iTween.FadeTo(Cube, iTween.Hash("alpha", 1f, "time", 3.0f));
                         break;
                     case 1:
                         Cube = Instantiate(cube1);

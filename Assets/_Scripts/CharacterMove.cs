@@ -58,10 +58,10 @@ public class CharacterMove : MonoBehaviour
     void Update()
     {
 
-        if (moveSwitch)
-        {
-            transform.Translate(speed * moveDirection);
-        }
+        // if (moveSwitch)
+        // {
+        //     transform.Translate(speed * moveDirection);
+        // }
 
 
         //보통 블럭을 밟으면 전부 파괴
@@ -69,6 +69,7 @@ public class CharacterMove : MonoBehaviour
         //-z방향으로 이동.
         charCtrl.SimpleMove(-Vector3.forward * speed);
 
+        // charCtrl.Move(-Vector3.forward * speed);
 
 
 
@@ -84,13 +85,13 @@ public class CharacterMove : MonoBehaviour
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
 
-        print(hit.collider.gameObject.layer);
+        // print(hit.collider.gameObject.layer);
         //충돌한 물체가 장애물이면
         if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
             print(hit);
             //캐릭터는 한칸 뒤로 간다.
-            transform.Translate(-Vector3.forward);
+            // transform.Translate(-Vector3.forward);
         }
         else if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Direction"))
         {
