@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Cube
   - Road
-  - BGCube
+  - Cube
   layers:
   - Default
   - TransparentFX
@@ -17,7 +16,7 @@ TagManager:
   - 
   - 
   - NotShadow
-  - 
+  - Obstacle
   - 
   - 
   - 

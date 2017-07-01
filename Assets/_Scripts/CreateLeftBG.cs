@@ -9,12 +9,20 @@ using UnityEngine;
 // - createDelay
 // - Array size
 // - createPos
+
+//배열에 미리 종류 별로 오브젝트를 넣어둔다.
+//최초 1회만 만들고 
+// 종착지에 닿게 되면 다시 가져온다.
 public class CreateLeftBG : MonoBehaviour {
     public GameObject[] BG;
     public float createDelay;
     public float currentTime;
     public int increaseZPos;
     public Transform createPos;
+
+
+
+
 	// Use this for initialization
 	void Start () {
         createPos = GetComponent<Transform>();

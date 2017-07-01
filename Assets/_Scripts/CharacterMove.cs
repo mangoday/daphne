@@ -103,10 +103,44 @@ public class CharacterMove : MonoBehaviour
         if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
             print(hit);
+
+            //자연스럽게 움직이도록
             //캐릭터는 한칸 뒤로 간다.
-            transform.Translate(Vector3.forward);
+
+            // StartCoroutine(MoveBackWard());
+            float backValue = 1.0f;
+
+            iTween.MoveTo(gameObject, transform.position + 2*Vector3.forward , 2.0f);
+
+
+            
         }
+
+        //충돌한 물체가 방향 큐브이면
+        //레이어를 1차 가르고
+        if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            //오른쪽 방향 블럭일 때와
+            if(true)
+            {
+                
+            }
+            //왼쪽 방향 블럭일 때로 거른다.
+            else
+            {
+
+            }
+        }
+
+
     }
+
+    // IEnumerator MoveBackWard()
+    // {
+    //     transform.Translate(-Vector3.forward);
+
+    //     yield return Wai
+    // }
 
 
 
