@@ -19,13 +19,18 @@ public class CrerateRandomSeed : MonoBehaviour {
 
     public int[,] map;
     public int row, col;
-    public GameObject road, cube1, cube2, cube3;
+    public GameObject road;
+    public GameObject[] cube;
+
     public int cubeNumber;
     public float waitTime;
     public float cubeSize;
     Vector3 createPos;
+    public int count; // 막히는 부분이 있는지 확인.
+
 	// Use this for initialization
 	void Start () {
+        count = 0;
         Init();
         RandomSeed(map);
         StartCoroutine(CreateCube());
@@ -41,10 +46,16 @@ public class CrerateRandomSeed : MonoBehaviour {
     // 인자로 받은 행렬에 값을 넣어 반환해준다.
     void RandomSeed(int[,] map)
     {
-        for(int i=0; i < cubeNumber; i++)
+        for(int i=0; i < cubeNumber; i++) 
         {
             int temp = Random.Range(0, (row * col)-1); // 몇번 째 배열에 넣을 것인지 결정.
-            map[temp / row, temp % row] = Random.Range(1, 4); // 정해진 배열에 몇번 째 큐브를 넣을것인지 결정.
+            map[temp / row, temp % row] = 1; // 정해진 배열에 몇번 째 큐브를 넣을것인지 결정.
+        }
+        
+        for(int i=0; i< row; i++) // 첫줄은 비우자 + 마지막줄도 비우자.
+        {
+            map[0, i] = 0;
+            map[col-1, i] = 0;
         }
         // 남은 곳은 0.
     }
@@ -61,24 +72,34 @@ public class CrerateRandomSeed : MonoBehaviour {
                     case 0:
                         Cube = Instantiate(road);
                         Cube.transform.position = createPos;
+                        count = 0;
                         break;
-                    case 1:
-                        Cube = Instantiate(cube1);
-                        Cube.transform.position = createPos;
-                        break;
-                    case 2:
-                        Cube = Instantiate(cube2);
-                        Cube.transform.position = createPos;
-                        break;
-                    case 3:
-                        Cube = Instantiate(cube3);
-                        Cube.transform.position = createPos;
+                    case 1: // 전줄의 마지막이 1일경우 첫줄 혹은 두번째 줄을 로드로 해야함.
+                        count++;
+                        if (count == row) // 막힌 경우. road 생성.
+                        {
+                            Cube = Instantiate(road);
+                            map[i + 1, j] = 0; // 다음 줄 1칸 확보해주기.
+                            Cube.transform.position = createPos;
+                        }
+                        else
+                        {
+                            Cube = Instantiate(cube[Random.Range(0, cube.Length)]);
+                            Cube.transform.position = createPos;
+                        }
+
+                        // 장애물의 대각선중 한곳을 비우자.
+                        if (i < col-1 && j != 0  && j != row)
+                        {
+                            map[i + 1, Random.Range(j - 1, j + 1)] = 0;
+                        }
                         break;
                 }
                 createPos.x += -cubeSize; // 다음 큐브를 위한 X 포지션 교체
             }
             // 한줄 끝나면 한칸 올려줌 Z 포지션 교체, X 리셋
             //yield return new WaitForSeconds(waitTime);
+            count = 0;
             yield return null;
             createPos.x = 0;
             createPos.z += -cubeSize;
