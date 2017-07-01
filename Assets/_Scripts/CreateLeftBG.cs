@@ -19,7 +19,7 @@ public class CreateLeftBG : MonoBehaviour {
     public float currentTime;
     public int increaseZPos;
     public Transform createPos;
-
+    Transform parent;
 
 
 
@@ -28,6 +28,7 @@ public class CreateLeftBG : MonoBehaviour {
         createPos = GetComponent<Transform>();
         createPos.position = transform.position;
         currentTime = createDelay;
+        parent = GetComponentInParent<Transform>();
 	}
 	
 	// Update is called once per frame

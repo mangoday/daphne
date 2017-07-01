@@ -10,6 +10,7 @@ using UnityEngine;
 public class OnClickCube : MonoBehaviour {
     private OnClickCube m_instance;
     public static OnClickCube instance;
+    public Transform parent;
 
     private void Awake()
     {
@@ -124,6 +125,7 @@ public class OnClickCube : MonoBehaviour {
                             Destroy(target.gameObject); // 삭제 후 
                             ChangeObject.transform.position = target.position; // 배치
                             m_List.RemoveAt(0); // 첫번째 경우 삭제
+                            ChangeObject.transform.parent = parent;
                             m_State = GameState.AddOneState; // state 변경
                             return;
                         }
@@ -133,6 +135,7 @@ public class OnClickCube : MonoBehaviour {
                             Destroy(target.gameObject); // 삭제 후 
                             ChangeObject.transform.position = target.position; // 배치
                             m_List.RemoveAt(0); // 첫번째 경우 삭제
+                            ChangeObject.transform.parent = parent;
                             m_State = GameState.AddOneState; // state 변경
                         }
                         else

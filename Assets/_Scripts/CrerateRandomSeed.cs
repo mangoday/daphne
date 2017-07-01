@@ -26,31 +26,21 @@ public class CrerateRandomSeed : MonoBehaviour
     public int cubeNumber;
     public float waitTime;
     public float cubeSize;
-
+    Transform createTrans;
+    Vector3 plane;
     Vector3 createPos;
-<<<<<<< HEAD
     public int count; // 막히는 부분이 있는지 확인.
 
 	// Use this for initialization
 	void Start () {
         count = 0;
-=======
-    Transform createTrans;
-    Vector3 plane;
-
-    // Use this for initialization
-    void Start()
-    {
->>>>>>> 2207c2e87d03a72acd2e34dc98f33f2cf2dd35d9
         Init();
         RandomSeed(map);
 
         // plane = GetComponentsInParent<Transform>()
 
         createTrans = GetComponentInParent<Transform>();
-
-
-        StartCoroutine(CreateCube());
+        StartCoroutine("CreateCube");
 
     }
     void Init()
@@ -63,7 +53,6 @@ public class CrerateRandomSeed : MonoBehaviour
     // 인자로 받은 행렬에 값을 넣어 반환해준다.
     void RandomSeed(int[,] map)
     {
-<<<<<<< HEAD
         for(int i=0; i < cubeNumber; i++) 
         {
             int temp = Random.Range(0, (row * col)-1); // 몇번 째 배열에 넣을 것인지 결정.
@@ -74,12 +63,6 @@ public class CrerateRandomSeed : MonoBehaviour
         {
             map[0, i] = 0;
             map[col-1, i] = 0;
-=======
-        for (int i = 0; i < cubeNumber; i++)
-        {
-            int temp = Random.Range(0, (row * col) - 1); // 몇번 째 배열에 넣을 것인지 결정.
-            map[temp / row, temp % row] = Random.Range(1, 4); // 정해진 배열에 몇번 째 큐브를 넣을것인지 결정.
->>>>>>> 2207c2e87d03a72acd2e34dc98f33f2cf2dd35d9
         }
         // 남은 곳은 0.
     }
@@ -100,7 +83,7 @@ public class CrerateRandomSeed : MonoBehaviour
                         Cube.transform.position = createPos;
                         count = 0;
                         break;
-<<<<<<< HEAD
+
                     case 1: // 전줄의 마지막이 1일경우 첫줄 혹은 두번째 줄을 로드로 해야함.
                         count++;
                         if (count == row) // 막힌 경우. road 생성.
@@ -120,22 +103,7 @@ public class CrerateRandomSeed : MonoBehaviour
                         {
                             map[i + 1, Random.Range(j - 1, j + 1)] = 0;
                         }
-=======
-                    case 1:
-                        Cube = Instantiate(cube1);
-                         Cube.transform.parent = createTrans;
-                        Cube.transform.position = createPos;
-                        break;
-                    case 2:
-                        Cube = Instantiate(cube2);
-                         Cube.transform.parent = createTrans;
-                        Cube.transform.position = createPos;
-                        break;
-                    case 3:
-                        Cube = Instantiate(cube3);
-                         Cube.transform.parent = createTrans;
-                        Cube.transform.position = createPos;
->>>>>>> 2207c2e87d03a72acd2e34dc98f33f2cf2dd35d9
+                        Cube.transform.parent = createTrans;
                         break;
 
                 }

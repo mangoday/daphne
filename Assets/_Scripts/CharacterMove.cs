@@ -109,11 +109,8 @@ public class CharacterMove : MonoBehaviour
 
             // StartCoroutine(MoveBackWard());
             float backValue = 1.0f;
-
             iTween.MoveTo(gameObject, transform.position + 2*Vector3.forward , 2.0f);
 
-
-            
         }
 
         //충돌한 물체가 방향 큐브이면
