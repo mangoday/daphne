@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33998699828635346}
   - component: {fileID: 23205575768371188}
   - component: {fileID: 64469054928498340}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cliff_Desert_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}

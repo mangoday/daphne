@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65095807173290012}
   - component: {fileID: 23688571185599384}
   - component: {fileID: 114632775312434550}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Obstacle02
   m_TagString: Cube
   m_Icon: {fileID: 0}
@@ -105,3 +105,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0100b00bf2b6fc249932cb48838140a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollSpeed: -0.5
+  rend: {fileID: 0}

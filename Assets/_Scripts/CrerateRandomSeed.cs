@@ -15,7 +15,8 @@ using UnityEngine;
 //  - 큐브 생성위치 ( 빈 오브젝트에서 출발 1개씩 생성한다 -> 포지션 값 변수 필요.)
 //  - 위에서 만든 배열 값들.
 
-public class CrerateRandomSeed : MonoBehaviour {
+public class CrerateRandomSeed : MonoBehaviour
+{
 
     public int[,] map;
     public int row, col;
@@ -23,13 +24,24 @@ public class CrerateRandomSeed : MonoBehaviour {
     public int cubeNumber;
     public float waitTime;
     public float cubeSize;
+
     Vector3 createPos;
-	// Use this for initialization
-	void Start () {
+    Transform createTrans;
+    Vector3 plane;
+
+    // Use this for initialization
+    void Start()
+    {
         Init();
         RandomSeed(map);
+
+        // plane = GetComponentsInParent<Transform>()
+
+        createTrans = GetComponentInParent<Transform>();
+
+
         StartCoroutine(CreateCube());
-        
+
     }
     void Init()
     {
@@ -41,9 +53,9 @@ public class CrerateRandomSeed : MonoBehaviour {
     // 인자로 받은 행렬에 값을 넣어 반환해준다.
     void RandomSeed(int[,] map)
     {
-        for(int i=0; i < cubeNumber; i++)
+        for (int i = 0; i < cubeNumber; i++)
         {
-            int temp = Random.Range(0, (row * col)-1); // 몇번 째 배열에 넣을 것인지 결정.
+            int temp = Random.Range(0, (row * col) - 1); // 몇번 째 배열에 넣을 것인지 결정.
             map[temp / row, temp % row] = Random.Range(1, 4); // 정해진 배열에 몇번 째 큐브를 넣을것인지 결정.
         }
         // 남은 곳은 0.
@@ -51,30 +63,37 @@ public class CrerateRandomSeed : MonoBehaviour {
 
     IEnumerator CreateCube() // 큐브 생성
     {
-        for(int i=0; i<col; i++)
+        for (int i = 0; i < col; i++)
         {
-            for(int j=0; j<row; j++)
+            for (int j = 0; j < row; j++)
             {
                 GameObject Cube;
-                switch (map[i,j])
+
+                switch (map[i, j])
                 {
                     case 0:
                         Cube = Instantiate(road);
+                        Cube.transform.parent = createTrans;
                         Cube.transform.position = createPos;
                         break;
                     case 1:
                         Cube = Instantiate(cube1);
+                         Cube.transform.parent = createTrans;
                         Cube.transform.position = createPos;
                         break;
                     case 2:
                         Cube = Instantiate(cube2);
+                         Cube.transform.parent = createTrans;
                         Cube.transform.position = createPos;
                         break;
                     case 3:
                         Cube = Instantiate(cube3);
+                         Cube.transform.parent = createTrans;
                         Cube.transform.position = createPos;
                         break;
+
                 }
+
                 createPos.x += -cubeSize; // 다음 큐브를 위한 X 포지션 교체
             }
             // 한줄 끝나면 한칸 올려줌 Z 포지션 교체, X 리셋
