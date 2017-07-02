@@ -31,9 +31,12 @@ public class CrerateRandomSeed : MonoBehaviour
     Vector3 createPos;
     public int count; // 막히는 부분이 있는지 확인.
 
+    float lengtBetween;
+
 	// Use this for initialization
 	void Start () {
         count = 0;
+        // lengtBetween = waitTime*GroundMove.flowSpeed/Time.deltaTime;
         Init();
         RandomSeed(map);
 
@@ -45,7 +48,7 @@ public class CrerateRandomSeed : MonoBehaviour
     }
     void Init()
     {
-        float speed = GroundMove.flowSpeed/Time.deltaTime;
+        float speed = GroundMove.flowSpeed/Time.deltaTime+1f;
         waitTime = cubeSize/speed;
         map = new int[col, row];
         createPos = transform.position;
@@ -114,10 +117,14 @@ public class CrerateRandomSeed : MonoBehaviour
                 }
                 
                 createPos.x += -cubeSize; // 다음 큐브를 위한 X 포지션 교체
+                // createPos.z = transform.position.z;
             }
             // 한줄 끝나면 한칸 올려줌 Z 포지션 교체, X 리셋
             count = 0;
             createPos.z += waitTime*GroundMove.flowSpeed/Time.deltaTime - cubeSize;
+
+            // createPos.z += transform.position.z - cubeSize;
+
             // yield return null;
             yield return new WaitForSeconds(waitTime);
             // yield return new WaitForSeconds(GroundMove.flowSpeed/Time.deltaTime);

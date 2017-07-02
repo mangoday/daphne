@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundMove : MonoBehaviour {
 
-	public static float flowSpeed = 0.02f;
+	public static float flowSpeed = 0.04f;
 
 	// Use this for initialization
 	void Start () {
