@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Road
   - Cube
+  - BGCube
   layers:
   - Default
   - TransparentFX
@@ -17,12 +18,12 @@ TagManager:
   - 
   - NotShadow
   - Obstacle
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - LeftCube
+  - RightCube
+  - CheckGround
+  - CheckForward
+  - Moon
+  - MoonObstacle
   - 
   - 
   - 

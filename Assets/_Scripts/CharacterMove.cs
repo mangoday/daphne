@@ -17,15 +17,13 @@ using UnityEngine;
 
 
 //캐릭터는 물위를 떠다닌다.
-//
+//위아래로 둥둥
 
-
-[RequireComponent(typeof(CharacterController))]
 public class CharacterMove : MonoBehaviour
 {
 
 
-    CharacterController charCtrl;
+    //CharacterController charCtrl;
 
 
     public float speed;
@@ -33,8 +31,13 @@ public class CharacterMove : MonoBehaviour
 
     public bool moveSwitch = true;
     public Vector3 moveDirection = Vector3.forward;
-
+    public float updownSpeed;
+    public bool isUp;
+    public float downLimit;
+    public float upLimit;
     //싱글톤 구조
+    public GameObject GroundCheck;
+
     public static CharacterMove Instance = null;
     private void Awake()
     {
@@ -50,8 +53,8 @@ public class CharacterMove : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
-        charCtrl = GetComponent<CharacterController>();
+        isUp = false;
+        //charCtrl = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -61,18 +64,27 @@ public class CharacterMove : MonoBehaviour
         if (moveSwitch)
         {
             transform.Translate(speed * moveDirection);
+            if (!isUp)
+            {
+                if (transform.position.y <= downLimit)
+                {
+                    isUp = true;
+                }
+                transform.Translate(Vector3.down * updownSpeed * Time.deltaTime);
+            }
+            else
+            {
+                if (transform.position.y >= upLimit)
+                {
+                    isUp = false;
+                }
+                transform.Translate(Vector3.up * updownSpeed * Time.deltaTime);
+            }
         }
-
-
         //보통 블럭을 밟으면 전부 파괴
 
         //-z방향으로 이동.
-        charCtrl.SimpleMove(-Vector3.forward * speed);
-
-        // iTween
-
-
-
+       
     }
 
 
@@ -96,43 +108,56 @@ public class CharacterMove : MonoBehaviour
     /// collider while performing a Move.
     /// </summary>
     /// <param name="hit">The ControllerColliderHit data associated with this collision.</param>
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
+   
+    //void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
 
-        //충돌한 물체가 장애물이면
-        if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+    //    //충돌한 물체가 장애물이면
+    //    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+    //    {
+    //        print(hit);
+
+    //        //자연스럽게 움직이도록
+    //        //캐릭터는 한칸 뒤로 간다.
+
+    //        // StartCoroutine(MoveBackWard());
+    //        float backValue = 1.0f;
+    //        iTween.MoveTo(gameObject, transform.position + 2*Vector3.forward , 2.0f);
+
+    //    }
+
+    //    //충돌한 물체가 방향 큐브이면
+    //    //레이어를 1차 가르고
+    //    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("LeftCube"))
+    //    {
+            
+    //    }
+
+    //    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("RightCube"))
+    //    {
+
+    //    }
+
+    //}
+
+    private void OnTriggerEnter(Collider hit)
+    {
+        if (hit.gameObject.layer == LayerMask.NameToLayer("Obstacle") && moveSwitch)
         {
             print(hit);
-
             //자연스럽게 움직이도록
             //캐릭터는 한칸 뒤로 간다.
 
             // StartCoroutine(MoveBackWard());
             float backValue = 1.0f;
+            iTween.MoveTo(gameObject, transform.position + 2 * Vector3.forward, 2.0f);
+            iTween.MoveTo(GroundCheck, transform.position + 2 * Vector3.forward, 2.0f); // checker도 데려가자.
 
-            iTween.MoveTo(gameObject, transform.position + 2*Vector3.forward , 2.0f);
-
-
-            
         }
 
         //충돌한 물체가 방향 큐브이면
         //레이어를 1차 가르고
-        if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
-        {
-            //오른쪽 방향 블럭일 때와
-            if(true)
-            {
-                
-            }
-            //왼쪽 방향 블럭일 때로 거른다.
-            else
-            {
-
-            }
-        }
-
-
+        
     }
 
     // IEnumerator MoveBackWard()
