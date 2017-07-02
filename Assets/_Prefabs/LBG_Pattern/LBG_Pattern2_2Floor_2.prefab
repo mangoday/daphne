@@ -397,6 +397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4357634706300338}
   - component: {fileID: 114873257750377994}
+  - component: {fileID: 114862288059565944}
   m_Layer: 0
   m_Name: LBG_Pattern2_2Floor_2
   m_TagString: Untagged
@@ -593,6 +594,7 @@ GameObject:
   - component: {fileID: 4210307181814098}
   - component: {fileID: 33084418565501880}
   - component: {fileID: 23956435029397212}
+  - component: {fileID: 114419576881117744}
   m_Layer: 0
   m_Name: FruitTree_4
   m_TagString: Untagged
@@ -2976,6 +2978,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114419576881117744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1935382672710280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd740f00c2f8a44198242c18c65c4ea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114862288059565944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1659556648466048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9056ea71f7ab4777871e15be95b1716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114873257750377994
 MonoBehaviour:
   m_ObjectHideFlags: 1

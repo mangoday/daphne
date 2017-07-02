@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 4446494486266122}
   - component: {fileID: 33748736679204208}
   - component: {fileID: 23714754575668122}
+  - component: {fileID: 114681942671877332}
   m_Layer: 0
   m_Name: Tree_5
   m_TagString: Untagged
@@ -92,6 +93,7 @@ GameObject:
   - component: {fileID: 4913391314010684}
   - component: {fileID: 33069131032566406}
   - component: {fileID: 23527372732426246}
+  - component: {fileID: 114164283757962302}
   m_Layer: 0
   m_Name: FruitTree_4
   m_TagString: Untagged
@@ -180,6 +182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4732550574378428}
   - component: {fileID: 114212535963623364}
+  - component: {fileID: 114076338544546262}
   m_Layer: 0
   m_Name: LBG_Pattern2_2Floor_1
   m_TagString: Untagged
@@ -2976,6 +2979,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114076338544546262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1219170289119820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9056ea71f7ab4777871e15be95b1716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114164283757962302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127730354454094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd740f00c2f8a44198242c18c65c4ea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114212535963623364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2985,5 +3010,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3108329e0c324ba9bfd2ad19864f619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114681942671877332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099120945518352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd740f00c2f8a44198242c18c65c4ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

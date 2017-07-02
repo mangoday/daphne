@@ -45,7 +45,8 @@ public class CrerateRandomSeed : MonoBehaviour
     }
     void Init()
     {
-        waitTime = 1f;
+        float speed = GroundMove.flowSpeed/Time.deltaTime;
+        waitTime = cubeSize/speed;
         map = new int[col, row];
         createPos = transform.position;
     } // 초기화 필요한 친구들.
@@ -79,6 +80,9 @@ public class CrerateRandomSeed : MonoBehaviour
                 {
                     case 0:
                         Cube = Instantiate(road);
+
+                        iTween.FadeTo(Cube, 1.0f, 1.0f);
+
                         Cube.transform.parent = createTrans;
                         Cube.transform.position = createPos;
                         count = 0;
@@ -103,19 +107,21 @@ public class CrerateRandomSeed : MonoBehaviour
                         {
                             map[i + 1, Random.Range(j - 1, j + 1)] = 0;
                         }
+                         iTween.FadeTo(Cube, 1.0f, 1.0f);
                         Cube.transform.parent = createTrans;
                         break;
 
                 }
-
+                
                 createPos.x += -cubeSize; // 다음 큐브를 위한 X 포지션 교체
             }
             // 한줄 끝나면 한칸 올려줌 Z 포지션 교체, X 리셋
-            //yield return new WaitForSeconds(waitTime);
             count = 0;
-            yield return null;
+            createPos.z += waitTime*GroundMove.flowSpeed/Time.deltaTime - cubeSize;
+            // yield return null;
+            yield return new WaitForSeconds(waitTime);
+            // yield return new WaitForSeconds(GroundMove.flowSpeed/Time.deltaTime);
             createPos.x = 0;
-            createPos.z += -cubeSize;
         }
     }
 }
