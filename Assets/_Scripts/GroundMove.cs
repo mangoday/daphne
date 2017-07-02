@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GroundMove : MonoBehaviour {
 
+	public static float flowSpeed = 0.02f;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -11,6 +13,6 @@ public class GroundMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(0.01f*Vector3.forward);
+		transform.Translate(flowSpeed*Vector3.forward);
 	}
 }

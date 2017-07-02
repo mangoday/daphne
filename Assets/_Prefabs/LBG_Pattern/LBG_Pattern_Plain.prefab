@@ -164,6 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4478687662141198}
   - component: {fileID: 114309515445542120}
+  - component: {fileID: 114492704029476976}
   m_Layer: 0
   m_Name: LBG_Pattern_Plain
   m_TagString: Untagged
@@ -2705,5 +2706,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3108329e0c324ba9bfd2ad19864f619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114492704029476976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1258568987240162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9056ea71f7ab4777871e15be95b1716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
